@@ -6,15 +6,16 @@
   'use strict';
 
   /* ---------- Data ---------- */
+  // `core`: headline technologies — rendered as filled pills for visual hierarchy.
   const SKILLS = [
-    { icon: '🎨', title: 'Frontend', tags: ['React.js', 'Next.js', 'Redux', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'] },
-    { icon: '⚙️', title: 'Backend', tags: ['Node.js', 'Express.js', 'Laravel', 'Python', 'FastAPI', 'RESTful APIs'] },
-    { icon: '🗄️', title: 'Databases', tags: ['MongoDB', 'MySQL', 'PostgreSQL'] },
-    { icon: '🧠', title: 'Agentic AI & LLM', tags: ['LangChain', 'LangGraph', 'n8n', 'OpenAI', 'RAG', 'MCP Server', 'Vector Embeddings', 'Pinecone'] },
-    { icon: '☁️', title: 'Cloud & DevOps', tags: ['AWS (EC2 · S3 · RDS)', 'Docker', 'GitHub Actions', 'CI/CD', 'Heroku', 'Netlify', 'Vercel'] },
-    { icon: '🔌', title: 'API & Integrations', tags: ['Stripe', 'Razorpay', 'PayPal', 'SSO', 'OAuth', 'Webhooks'] },
-    { icon: '🔐', title: 'Security & Auth', tags: ['JWT', 'Role-Based Access Control', 'Secure API Design'] },
-    { icon: '🧰', title: 'Tools & Environment', tags: ['Git', 'GitHub', 'Bitbucket', 'Postman', 'Jira', 'Asana', 'VS Code', 'Cursor', 'Claude', 'Linux'] },
+    { icon: '🎨', title: 'Frontend', tags: ['React.js', 'Next.js', 'Redux', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'], core: ['React.js', 'Next.js', 'TypeScript'] },
+    { icon: '⚙️', title: 'Backend', tags: ['Node.js', 'Express.js', 'Laravel', 'Python', 'FastAPI', 'RESTful APIs'], core: ['Node.js', 'Python', 'FastAPI'] },
+    { icon: '🗄️', title: 'Databases', tags: ['MongoDB', 'MySQL', 'PostgreSQL'], core: ['MongoDB', 'PostgreSQL'] },
+    { icon: '🧠', title: 'Agentic AI & LLM', tags: ['LangChain', 'LangGraph', 'n8n', 'OpenAI', 'RAG', 'MCP Server', 'Vector Embeddings', 'Pinecone'], core: ['LangChain', 'LangGraph', 'RAG'] },
+    { icon: '☁️', title: 'Cloud & DevOps', tags: ['AWS (EC2 · S3 · RDS)', 'Docker', 'GitHub Actions', 'CI/CD', 'Heroku', 'Netlify', 'Vercel'], core: ['AWS (EC2 · S3 · RDS)', 'Docker'] },
+    { icon: '🔌', title: 'API & Integrations', tags: ['Stripe', 'Razorpay', 'PayPal', 'SSO', 'OAuth', 'Webhooks'], core: ['Stripe', 'OAuth'] },
+    { icon: '🔐', title: 'Security & Auth', tags: ['JWT', 'Role-Based Access Control', 'Secure API Design'], core: ['JWT'] },
+    { icon: '🧰', title: 'Tools & Environment', tags: ['Git', 'GitHub', 'Bitbucket', 'Postman', 'Jira', 'Asana', 'VS Code', 'Cursor', 'Claude', 'Linux'], core: ['Git', 'Postman'] },
   ];
 
   // `links`: set { demo, code } URLs for public projects, or { confidential: true }
@@ -33,15 +34,16 @@
       links: { confidential: true },
     },
     {
-      icon: '🍽️', tag: 'Agentic AI · MCP', title: 'AI Chatbot Automation for Restaurant',
-      desc: 'Fully automated AI chatbot answering real-time questions about menu, hours, and services — with zero manual staff involvement.',
+      icon: '🎙️', tag: 'AI · Realtime Voice', title: 'HireSight — AI Interview Platform',
+      desc: 'AI-powered platform that automates the entire interview process — companies create roles, onboard candidates, and run real-time, resume-driven AI interview sessions at scale.',
       features: [
-        'Custom MCP server (Node.js) exposing real-time data tools',
-        'RAG pipeline with OpenAI embeddings + Pinecone vector DB',
-        'n8n flow: webhook → vector search → MCP tools → LLM → reply',
+        'WebRTC real-time audio/video interview sessions',
+        'Deepgram speech-to-text & text-to-speech for natural conversation',
+        'LLM asks resume- and skill-based questions, evaluates answers live',
+        'Auto-generated reports with scoring and hiring recommendations',
       ],
-      arch: 'n8n is the automation engine connecting the chatbot UI, Pinecone retrieval, MCP tools, and the LLM into one grounded workflow.',
-      stack: ['Next.js', 'Node.js', 'MCP', 'Pinecone', 'n8n', 'OpenAI'],
+      arch: 'Next.js + FastAPI orchestrate WebRTC streams and Deepgram STT/TTS into an LLM loop, enabling fully automated interviews that run in parallel at scale.',
+      stack: ['Next.js', 'FastAPI', 'WebRTC', 'Deepgram', 'LLM', 'Python'],
       links: { confidential: true },
     },
     {
@@ -189,12 +191,20 @@
     const grid = $('#skillsGrid');
     if (!grid) return;
     SKILLS.forEach((s, i) => {
-      const card = el('article', 'skill-card reveal');
+      const card = el('article', 'skill-card reveal glass');
       card.dataset.delay = String(i * 60);
+      const core = s.core || [];
+      const tags = s.tags
+        .map(t => `<span class="skill-tag${core.includes(t) ? ' skill-tag--core' : ''}">${t}</span>`)
+        .join('');
       card.innerHTML = `
-        <div class="skill-card__ico" aria-hidden="true">${s.icon}</div>
+        <div class="skill-card__head">
+          <div class="skill-card__ico" aria-hidden="true">${s.icon}</div>
+          <span class="skill-card__no">${String(i + 1).padStart(2, '0')}</span>
+        </div>
         <h3>${s.title}</h3>
-        <div class="skill-tags">${s.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>`;
+        <div class="skill-tags">${tags}</div>
+        <div class="skill-card__meta">${s.tags.length} technologies</div>`;
       grid.appendChild(card);
     });
   }
