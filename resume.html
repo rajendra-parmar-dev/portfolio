@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajendra Parmar — Resume</title>
+  <meta name="description" content="Resume of Rajendra Parmar, Senior Full Stack Developer & AI Engineer." />
+  <style>
+    :root { --ink:#15182b; --muted:#586; --brand:#6d5efc; --line:#e6e8f0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, Segoe UI, Roboto, Arial, sans-serif; color: #1c1f33; background: #eef0f6; line-height: 1.55; padding: 2rem 1rem; }
+    .sheet { max-width: 820px; margin: 0 auto; background: #fff; padding: 2.6rem; border-radius: 14px; box-shadow: 0 20px 50px -25px rgba(0,0,0,.3); }
+    .head { border-bottom: 3px solid var(--brand); padding-bottom: 1.2rem; margin-bottom: 1.4rem; }
+    h1 { font-size: 2rem; letter-spacing: -.02em; }
+    .role { color: var(--brand); font-weight: 600; font-size: 1.05rem; margin-top: .2rem; }
+    .contact { margin-top: .7rem; font-size: .88rem; color: #586; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; }
+    .contact a { color: #586; text-decoration: none; }
+    h2 { font-size: .95rem; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); margin: 1.5rem 0 .7rem; border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+    p, li { font-size: .92rem; color: #33374d; }
+    ul { margin: .3rem 0 .3rem 1.1rem; }
+    li { margin-bottom: .25rem; }
+    .job { margin-bottom: 1rem; }
+    .job__top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .2rem; }
+    .job__role { font-weight: 700; }
+    .job__period { color: #586; font-size: .85rem; }
+    .job__co { color: var(--brand); font-size: .88rem; font-weight: 500; margin-bottom: .25rem; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem 1.4rem; }
+    .skills-grid b { color: #15182b; }
+    .actions { max-width: 820px; margin: 0 auto 1rem; display: flex; gap: .6rem; justify-content: flex-end; }
+    .btn { background: var(--brand); color: #fff; border: none; padding: .6rem 1.2rem; border-radius: 100px; font-weight: 600; cursor: pointer; font-size: .9rem; text-decoration: none; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .sheet { box-shadow: none; border-radius: 0; max-width: none; padding: 1.2rem; }
+      .actions { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <a href="index.html" class="btn" style="background:#33374d;">← Back to Portfolio</a>
+    <button class="btn" onclick="window.print()">⬇ Download / Print PDF</button>
+  </div>
+
+  <div class="sheet">
+    <header class="head">
+      <h1>Rajendra Parmar</h1>
+      <div class="role">Senior Full Stack Developer &amp; AI Engineer · 7+ Years</div>
+      <div class="contact">
+        <a href="mailto:rajendraparmar0119@gmail.com">rajendraparmar0119@gmail.com</a>
+        <a href="https://www.linkedin.com/in/rajendra-parmar-dev/" target="_blank" rel="noopener">linkedin.com/in/rajendra-parmar-dev</a>
+        <a href="https://github.com/rajendraparmar0119-sketch" target="_blank" rel="noopener">github.com/rajendraparmar0119-sketch</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Professional Summary</h2>
+      <p>Senior software engineer with 7+ years of experience building scalable web applications, backend APIs, and enterprise solutions with the MERN stack and Python. Hands-on with SQL/NoSQL database design and performance optimization, and cloud deployment via AWS, Docker, and CI/CD. Recent focus on AI-driven solutions — Generative AI, RAG, Agentic AI, LLM integrations, workflow automation, and vector databases. Strong Agile collaborator and direct client communicator focused on scalable, maintainable, business-oriented software.</p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div class="job">
+        <div class="job__top"><span class="job__role">Senior Full Stack Developer &amp; AI Engineer</span><span class="job__period">2024 — Present</span></div>
+        <div class="job__co">AI &amp; Enterprise Solutions</div>
+        <ul>
+          <li>Lead design and delivery of AI products: RAG systems, Agentic AI, LLM integrations, and workflow automation.</li>
+          <li>Architect scalable full stack platforms and mentor cross-functional engineering teams.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job__top"><span class="job__role">Full Stack Developer / Solution Architect</span><span class="job__period">2021 — 2024</span></div>
+        <div class="job__co">Enterprise &amp; SaaS Products</div>
+        <ul>
+          <li>Architected scalable MERN &amp; Python applications and performant SQL/NoSQL data models.</li>
+          <li>Shipped cloud-native systems on AWS with Docker and CI/CD pipelines.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job__top"><span class="job__role">Software Developer (MERN &amp; Python)</span><span class="job__period">2019 — 2021</span></div>
+        <div class="job__co">Web &amp; API Development</div>
+        <ul>
+          <li>Built backend APIs and responsive web apps; integrated third-party services.</li>
+          <li>Collaborated directly with clients in Agile teams to deliver business value.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job__top"><span class="job__role">Software Developer</span><span class="job__period">2018 — 2019</span></div>
+        <div class="job__co">Early Career</div>
+        <ul>
+          <li>Built production web applications and established strong engineering fundamentals.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Projects</h2>
+      <ul>
+        <li><b>AI Interview Platform</b> — Real-time voice AI interviews using WebRTC, Deepgram, OpenAI (STT/TTS).</li>
+        <li><b>B2B Commerce Platform</b> — Next.js + Commercetools with customer-specific pricing, inventory &amp; order management.</li>
+        <li><b>RAG Knowledge Assistant</b> — OpenAI + LangChain + vector database for enterprise semantic search.</li>
+        <li><b>Lead Generation Platform</b> — FastAPI + PostgreSQL data collection with an analytics dashboard.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <p><b>Frontend:</b> React, Next.js, TypeScript, JavaScript, Tailwind CSS</p>
+        <p><b>Backend:</b> Python, FastAPI, Node.js, Express, REST, GraphQL</p>
+        <p><b>Databases:</b> PostgreSQL, MongoDB, MySQL, Redis</p>
+        <p><b>Cloud/DevOps:</b> AWS, Docker, Kubernetes, GitHub Actions, CI/CD</p>
+        <p><b>AI &amp; LLM:</b> OpenAI, LangChain, RAG, Agentic AI, Vector DBs, Deepgram</p>
+        <p><b>Commerce:</b> Commercetools, Headless Commerce</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
