@@ -6,17 +6,29 @@
   'use strict';
 
   /* ---------- Data ---------- */
-  // `core`: headline technologies — rendered as filled pills for visual hierarchy.
+  // `ico`: key into SKILL_ICONS (crisp line icons). `desc`: one-line capability summary.
   const SKILLS = [
-    { icon: '🎨', title: 'Frontend', tags: ['React.js', 'Next.js', 'Redux', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'], core: ['React.js', 'Next.js', 'TypeScript'] },
-    { icon: '⚙️', title: 'Backend', tags: ['Node.js', 'Express.js', 'Laravel', 'Python', 'FastAPI', 'RESTful APIs'], core: ['Node.js', 'Python', 'FastAPI'] },
-    { icon: '🗄️', title: 'Databases', tags: ['MongoDB', 'MySQL', 'PostgreSQL'], core: ['MongoDB', 'PostgreSQL'] },
-    { icon: '🧠', title: 'Agentic AI & LLM', tags: ['LangChain', 'LangGraph', 'n8n', 'OpenAI', 'RAG', 'MCP Server', 'Vector Embeddings', 'Pinecone'], core: ['LangChain', 'LangGraph', 'RAG'] },
-    { icon: '☁️', title: 'Cloud & DevOps', tags: ['AWS (EC2 · S3 · RDS)', 'Docker', 'GitHub Actions', 'CI/CD', 'Heroku', 'Netlify', 'Vercel'], core: ['AWS (EC2 · S3 · RDS)', 'Docker'] },
-    { icon: '🔌', title: 'API & Integrations', tags: ['Stripe', 'Razorpay', 'PayPal', 'SSO', 'OAuth', 'Webhooks'], core: ['Stripe', 'OAuth'] },
-    { icon: '🔐', title: 'Security & Auth', tags: ['JWT', 'Role-Based Access Control', 'Secure API Design'], core: ['JWT'] },
-    { icon: '🧰', title: 'Tools & Environment', tags: ['Git', 'GitHub', 'Bitbucket', 'Postman', 'Jira', 'Asana', 'VS Code', 'Cursor', 'Claude', 'Linux'], core: ['Git', 'Postman'] },
+    { ico: 'frontend', title: 'Frontend', desc: 'Production-grade, responsive interfaces with React & Next.js.', tags: ['React.js', 'Next.js', 'Redux', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'] },
+    { ico: 'backend', title: 'Backend', desc: 'Scalable, well-structured APIs and services in Node.js & Python.', tags: ['Node.js', 'Express.js', 'Laravel', 'Python', 'FastAPI', 'RESTful APIs'] },
+    { ico: 'database', title: 'Databases', desc: 'Reliable, well-modeled data layers across SQL & NoSQL.', tags: ['MongoDB', 'MySQL', 'PostgreSQL'] },
+    { ico: 'ai', title: 'Agentic AI & LLM', desc: 'AI agents and RAG systems that reason and use real tools.', tags: ['LangChain', 'LangGraph', 'n8n', 'OpenAI', 'RAG', 'MCP Server', 'Vector Embeddings', 'Pinecone'] },
+    { ico: 'cloud', title: 'Cloud & DevOps', desc: 'Cloud-native deployment and CI/CD pipelines on AWS.', tags: ['AWS (EC2 · S3 · RDS)', 'Docker', 'GitHub Actions', 'CI/CD', 'Heroku', 'Netlify', 'Vercel'] },
+    { ico: 'api', title: 'API & Integrations', desc: 'Payments, SSO, and dependable third-party integrations.', tags: ['Stripe', 'Razorpay', 'PayPal', 'SSO', 'OAuth', 'Webhooks'] },
+    { ico: 'security', title: 'Security & Auth', desc: 'Secure authentication and role-based access control.', tags: ['JWT', 'Role-Based Access Control', 'Secure API Design'] },
+    { ico: 'tools', title: 'Tools & Environment', desc: 'Modern tooling for fast, collaborative delivery.', tags: ['Git', 'GitHub', 'Bitbucket', 'Postman', 'Jira', 'Asana', 'VS Code', 'Cursor', 'Claude', 'Linux'] },
   ];
+
+  // Inline stroke icons (24×24, currentColor) — no external requests, render identically everywhere.
+  const SKILL_ICONS = {
+    frontend: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 6h.01M10 6h.01"/></svg>',
+    backend: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>',
+    database: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>',
+    ai: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><circle cx="12" cy="12" r="2"/></svg>',
+    cloud: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 9.5 4 4 0 0 0 7 17.5"/><path d="M8 19h9.5"/></svg>',
+    api: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11.4 4.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.41-1.41"/></svg>',
+    security: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>',
+    tools: '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2 2.5-2.5z"/></svg>',
+  };
 
   // `links`: set { demo, code } URLs for public projects, or { confidential: true }
   // for client/company work to render a "Details on request" chip.
@@ -193,16 +205,14 @@
     SKILLS.forEach((s, i) => {
       const card = el('article', 'skill-card reveal glass');
       card.dataset.delay = String(i * 60);
-      const core = s.core || [];
-      const tags = s.tags
-        .map(t => `<span class="skill-tag${core.includes(t) ? ' skill-tag--core' : ''}">${t}</span>`)
-        .join('');
+      const tags = s.tags.map(t => `<span class="skill-tag">${t}</span>`).join('');
       card.innerHTML = `
         <div class="skill-card__head">
-          <div class="skill-card__ico" aria-hidden="true">${s.icon}</div>
+          <div class="skill-card__ico" aria-hidden="true">${SKILL_ICONS[s.ico] || ''}</div>
           <span class="skill-card__no">${String(i + 1).padStart(2, '0')}</span>
         </div>
         <h3>${s.title}</h3>
+        <p class="skill-card__desc">${s.desc}</p>
         <div class="skill-tags">${tags}</div>
         <div class="skill-card__meta">${s.tags.length} technologies</div>`;
       grid.appendChild(card);
