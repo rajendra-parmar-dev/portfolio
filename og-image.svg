@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="1" stop-color="#14121f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6d5efc"/>
+      <stop offset="1" stop-color="#8b7dff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6d5efc" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#6d5efc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="320" fill="url(#glow)"/>
+  <circle cx="180" cy="560" r="280" fill="url(#glow)"/>
+
+  <!-- Logo mark -->
+  <rect x="80" y="80" width="84" height="84" rx="20" fill="url(#accent)"/>
+  <text x="122" y="140" font-size="46" font-weight="800" fill="#ffffff" text-anchor="middle">RP</text>
+
+  <!-- Availability badge -->
+  <circle cx="190" cy="122" r="6" fill="#6d5efc"/>
+  <text x="210" y="129" font-size="22" fill="#a1a1aa">Available for new projects &amp; roles</text>
+
+  <!-- Headline -->
+  <text x="80" y="320" font-size="76" font-weight="800" fill="#fafafa">Rajendra Parmar</text>
+  <text x="80" y="400" font-size="40" font-weight="700" fill="url(#accent)">Senior Full Stack &amp; AI Engineer</text>
+  <text x="80" y="460" font-size="28" fill="#a1a1aa">7+ years · Node.js · React · Next.js · Laravel · AWS</text>
+
+  <!-- Footer tags -->
+  <text x="80" y="560" font-size="24" fill="#71717a">FastAPI · LangChain · LangGraph · RAG · MCP · n8n · OpenAI</text>
+</svg>

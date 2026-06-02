@@ -7,76 +7,140 @@
 
   /* ---------- Data ---------- */
   const SKILLS = [
-    { icon: '🎨', title: 'Frontend', tags: ['React.js', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'] },
-    { icon: '⚙️', title: 'Backend', tags: ['Python', 'FastAPI', 'Node.js', 'Express.js', 'REST APIs', 'GraphQL'] },
-    { icon: '🗄️', title: 'Databases', tags: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'] },
-    { icon: '☁️', title: 'Cloud & DevOps', tags: ['AWS', 'Docker', 'Kubernetes', 'GitHub Actions', 'CI/CD'] },
-    { icon: '🧠', title: 'AI & LLM', tags: ['OpenAI', 'LangChain', 'RAG', 'Agentic AI', 'Vector Databases', 'Deepgram', 'LLM Integration'] },
-    { icon: '🛒', title: 'Commerce', tags: ['Commercetools', 'Headless Commerce'] },
+    { icon: '🎨', title: 'Frontend', tags: ['React.js', 'Next.js', 'Redux', 'TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'] },
+    { icon: '⚙️', title: 'Backend', tags: ['Node.js', 'Express.js', 'Laravel', 'Python', 'FastAPI', 'RESTful APIs'] },
+    { icon: '🗄️', title: 'Databases', tags: ['MongoDB', 'MySQL', 'PostgreSQL'] },
+    { icon: '🧠', title: 'Agentic AI & LLM', tags: ['LangChain', 'LangGraph', 'n8n', 'OpenAI', 'RAG', 'MCP Server', 'Vector Embeddings', 'Pinecone'] },
+    { icon: '☁️', title: 'Cloud & DevOps', tags: ['AWS (EC2 · S3 · RDS)', 'Docker', 'GitHub Actions', 'CI/CD', 'Heroku', 'Netlify', 'Vercel'] },
+    { icon: '🔌', title: 'API & Integrations', tags: ['Stripe', 'Razorpay', 'PayPal', 'SSO', 'OAuth', 'Webhooks'] },
+    { icon: '🔐', title: 'Security & Auth', tags: ['JWT', 'Role-Based Access Control', 'Secure API Design'] },
+    { icon: '🧰', title: 'Tools & Environment', tags: ['Git', 'GitHub', 'Bitbucket', 'Postman', 'Jira', 'Asana', 'VS Code', 'Cursor', 'Claude', 'Linux'] },
   ];
 
+  // `links`: set { demo, code } URLs for public projects, or { confidential: true }
+  // for client/company work to render a "Details on request" chip.
   const PROJECTS = [
     {
-      icon: '🎙️', tag: 'AI Platform', title: 'AI Interview Platform',
-      desc: 'Real-time AI-driven interview platform conducting live, voice-based candidate interviews.',
-      features: ['Real-time AI interviews over WebRTC', 'Speech-to-Text & Text-to-Speech pipeline', 'Adaptive, context-aware questioning'],
-      arch: 'Low-latency streaming audio with Deepgram + OpenAI orchestration and WebRTC media.',
-      stack: ['WebRTC', 'Deepgram', 'OpenAI', 'STT', 'TTS'],
+      icon: '🤖', tag: 'AI · RAG', title: 'E-commerce Customer Support System',
+      desc: 'AI-powered support system delivering real-time, context-aware answers about products, orders, and services for an e-commerce platform.',
+      features: [
+        'FastAPI backend orchestrating AI-driven response workflows',
+        'LangGraph multi-step reasoning with controlled tool usage',
+        'RAG using OpenAI text-embedding-3-large for semantic search',
+      ],
+      arch: 'Modular layers (API · AI orchestration · service); LangChain integrates external tools & APIs for dynamic context retrieval before generation.',
+      stack: ['Python', 'FastAPI', 'LangChain', 'LangGraph', 'OpenAI', 'RAG'],
+      links: { confidential: true },
     },
     {
-      icon: '🛍️', tag: 'B2B Commerce', title: 'B2B Commerce Platform',
-      desc: 'Headless B2B commerce experience with complex pricing and operational tooling.',
-      features: ['Customer-specific pricing engine', 'Inventory management', 'Order management workflows'],
-      arch: 'Next.js storefront on Commercetools APIs with composable, headless architecture.',
-      stack: ['Next.js', 'Commercetools', 'Headless', 'PostgreSQL'],
+      icon: '🍽️', tag: 'Agentic AI · MCP', title: 'AI Chatbot Automation for Restaurant',
+      desc: 'Fully automated AI chatbot answering real-time questions about menu, hours, and services — with zero manual staff involvement.',
+      features: [
+        'Custom MCP server (Node.js) exposing real-time data tools',
+        'RAG pipeline with OpenAI embeddings + Pinecone vector DB',
+        'n8n flow: webhook → vector search → MCP tools → LLM → reply',
+      ],
+      arch: 'n8n is the automation engine connecting the chatbot UI, Pinecone retrieval, MCP tools, and the LLM into one grounded workflow.',
+      stack: ['Next.js', 'Node.js', 'MCP', 'Pinecone', 'n8n', 'OpenAI'],
+      links: { confidential: true },
     },
     {
-      icon: '📚', tag: 'RAG / AI', title: 'RAG Knowledge Assistant',
-      desc: 'Enterprise knowledge assistant answering questions over private document corpora.',
-      features: ['Retrieval-Augmented Generation', 'Enterprise semantic search', 'Source-grounded answers'],
-      arch: 'LangChain pipelines + vector database retrieval feeding OpenAI for grounded responses.',
-      stack: ['OpenAI', 'LangChain', 'Vector DB', 'Python'],
+      icon: '📊', tag: 'Realtime Data', title: 'Blackbelt360 — Live Data Analysis Platform',
+      desc: 'Real-time data analysis platform providing instant insights into user activity via live, dynamic dashboards and reporting.',
+      features: [
+        'Node.js backend with WebSocket connectivity & REST APIs',
+        'Live charts (Analyst, DataWide) from third-party webhooks',
+        'AWS S3 upload/download with RBAC and secure authentication',
+      ],
+      arch: 'WebSocket-driven live updates with EJS dashboards; MySQL tuned with proper indexing for high-performance queries.',
+      stack: ['Node.js', 'WebSockets', 'EJS', 'AWS S3', 'MySQL'],
+      links: { confidential: true },
     },
     {
-      icon: '📈', tag: 'Data Platform', title: 'Lead Generation Platform',
-      desc: 'Automated lead data collection platform with a real-time analytics dashboard.',
-      features: ['Automated data collection', 'Analytics dashboard', 'High-throughput APIs'],
-      arch: 'FastAPI services over PostgreSQL with async data pipelines and dashboard reporting.',
-      stack: ['FastAPI', 'PostgreSQL', 'Analytics', 'Python'],
+      icon: '🏏', tag: 'Mobile Backend', title: 'MatchItSports — Batting Management Platform',
+      desc: 'Match batting management platform handling match content, bookings, and payments for mobile applications.',
+      features: [
+        'APIs for match content, scores, and user interactions',
+        'Third-party APIs & payment gateways for bookings/transactions',
+        'MongoDB data modeling for fast, reliable access',
+      ],
+      arch: 'Node.js + MongoDB backend with a responsive React.js frontend for interactive match management.',
+      stack: ['Node.js', 'MongoDB', 'React.js', 'Payments'],
+      links: { confidential: true },
+    },
+    {
+      icon: '💰', tag: 'Platform · Integrations', title: 'Pricing Engine — Centralized Device Pricing',
+      desc: 'Centralized platform fetching device information and pricing across multiple websites, with integrated device-management services.',
+      features: [
+        'Centralized device data retrieval across platforms',
+        'Integrated pricing, MDM, and FMIP check modules',
+        'Efficient processing for accurate, up-to-date pricing',
+      ],
+      arch: 'Modular backend integrating device info, pricing, MDM, and FMIP services for reliable multi-source data.',
+      stack: ['Node.js', 'REST APIs', 'Integrations', 'MySQL'],
+      links: { confidential: true },
     },
   ];
 
+  // Small inline SVG icons (no external requests)
+  const ICONS = {
+    demo: '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M19 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6"/></svg>',
+    code: '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 18c-4.5 1.5-4.5-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.5 1.3a12 12 0 0 0-6 0C6.5 2.8 5.5 3.1 5.5 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>',
+  };
+
   const TIMELINE = [
-    { period: '2024 — Present', role: 'Senior Full Stack Developer & AI Engineer', company: 'AI & Enterprise Solutions', text: 'Leading design of AI-driven products — RAG, Agentic AI, LLM integrations and workflow automation — while architecting scalable full stack platforms and mentoring teams.' },
-    { period: '2021 — 2024', role: 'Full Stack Developer / Solution Architect', company: 'Enterprise & SaaS Products', text: 'Architected scalable MERN & Python applications, designed performant SQL/NoSQL data models, and shipped cloud-native systems on AWS with Docker & CI/CD.' },
-    { period: '2019 — 2021', role: 'Software Developer (MERN & Python)', company: 'Web & API Development', text: 'Built backend APIs and responsive web apps, integrated third-party services, and collaborated directly with clients in Agile teams to deliver business value.' },
-    { period: '2018 — 2019', role: 'Software Developer', company: 'Early Career', text: 'Started building production web applications, established strong fundamentals in JavaScript, databases, and clean, maintainable software practices.' },
+    {
+      period: '2026 — Present', role: 'Senior Solution Engineer', company: 'Mentestack',
+      points: [
+        'Designed and built scalable, responsive full-stack applications using Node.js, React.js, and modern frontend frameworks.',
+        'Developed and maintained RESTful APIs connecting web and mobile apps for seamless user experiences.',
+        'Implemented secure authentication with JWT and role-based access control across user levels.',
+        'Built background jobs and asynchronous workflows with Node.js schedulers and RDS events to boost performance.',
+        'Integrated third-party services and payment gateways (Stripe, PayPal) and external APIs.',
+        'Optimized PostgreSQL and MySQL for fast queries and efficient data handling.',
+        'Guided architectural decisions, ran code reviews, and mentored team members.',
+        'Managed AWS deployments with Docker and CI/CD; built multi-tenant SaaS platforms for enterprise customers.',
+      ],
+    },
+    {
+      period: '2018 — 2025', role: 'Software Engineer', company: 'Full Stack Developer · Laravel · Node.js · React.js',
+      points: [
+        'Led a small team and delivered live projects with Node.js, Next.js, React.js, and Laravel.',
+        'Owned development, deployment, and client communication end-to-end.',
+        'Implemented RESTful APIs and integrated third-party services.',
+        'Optimized application performance and database queries (MySQL, PostgreSQL, MongoDB).',
+        'Managed CI/CD pipelines and deployed apps with Docker and AWS.',
+        'Built responsive, mobile-friendly applications and proactively resolved production issues.',
+      ],
+    },
   ];
 
   const SERVICES = [
-    { icon: '🧩', title: 'Full Stack Development', desc: 'End-to-end web apps built with MERN & Python — robust, scalable and maintainable.' },
+    { icon: '🧩', title: 'Full Stack Development', desc: 'End-to-end web apps with Node.js, React, Next.js & Laravel — robust, scalable and maintainable.' },
     { icon: '🤖', title: 'AI Application Development', desc: 'Generative AI & LLM-powered products integrated cleanly into real workflows.' },
     { icon: '🕹️', title: 'AI Agent Development', desc: 'Agentic AI systems that plan, use tools, and automate complex tasks.' },
     { icon: '⚡', title: 'FastAPI Development', desc: 'High-performance, async Python APIs with clean, documented contracts.' },
     { icon: '▲', title: 'Next.js Development', desc: 'Fast, SEO-friendly Next.js apps and headless storefronts.' },
     { icon: '🚀', title: 'SaaS Development', desc: 'Multi-tenant SaaS products from MVP to scale-ready architecture.' },
     { icon: '☁️', title: 'AWS Architecture', desc: 'Cloud-native design, deployment, and cost-aware infrastructure on AWS.' },
-    { icon: '🔌', title: 'API Development', desc: 'REST & GraphQL APIs designed for reliability and developer experience.' },
-    { icon: '🛒', title: 'Commercetools Development', desc: 'Composable, headless commerce solutions with complex business logic.' },
+    { icon: '🔌', title: 'API Development', desc: 'Robust RESTful APIs designed for reliability, security, and developer experience.' },
+    { icon: '🔄', title: 'Workflow Automation', desc: 'Automated business workflows with n8n — integrations, webhooks, and AI-driven pipelines.' },
     { icon: '💬', title: 'Technical Consulting', desc: 'Architecture reviews, AI strategy, and pragmatic technical guidance.' },
   ];
 
   const TECH = [
-    'React.js', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Python', 'FastAPI',
-    'Node.js', 'Express.js', 'GraphQL', 'PostgreSQL', 'MongoDB', 'MySQL', 'Redis',
-    'AWS', 'Docker', 'Kubernetes', 'GitHub Actions', 'OpenAI', 'LangChain', 'RAG',
-    'Agentic AI', 'Vector DB', 'Deepgram', 'Commercetools',
+    'React.js', 'Next.js', 'Redux', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Bootstrap',
+    'Node.js', 'Express.js', 'Laravel', 'Python', 'FastAPI', 'REST APIs',
+    'MongoDB', 'MySQL', 'PostgreSQL',
+    'LangChain', 'LangGraph', 'n8n', 'OpenAI', 'RAG', 'MCP', 'Pinecone',
+    'AWS', 'Docker', 'GitHub Actions', 'Vercel', 'Netlify',
+    'Stripe', 'PayPal', 'JWT', 'OAuth',
   ];
 
   const WHY = [
     { title: '7+ Years Experience', desc: 'A track record of shipping reliable software across domains and stacks.' },
     { title: 'AI Expertise', desc: 'Deep, hands-on work with RAG, Agentic AI, LLMs and vector search.' },
-    { title: 'Cloud Experience', desc: 'Production deployments on AWS with Docker, Kubernetes & CI/CD.' },
+    { title: 'Cloud Experience', desc: 'Production deployments on AWS (EC2, S3, RDS) with Docker & CI/CD.' },
     { title: 'Enterprise Applications', desc: 'Built scalable, enterprise-grade systems with complex requirements.' },
     { title: 'Client Communication', desc: 'Clear, direct collaboration to translate business needs into solutions.' },
     { title: 'Scalable Architecture', desc: 'Systems designed to grow — maintainable, performant and resilient.' },
@@ -128,7 +192,7 @@
       const card = el('article', 'skill-card reveal');
       card.dataset.delay = String(i * 60);
       card.innerHTML = `
-        <div class="skill-card__ico">${s.icon}</div>
+        <div class="skill-card__ico" aria-hidden="true">${s.icon}</div>
         <h3>${s.title}</h3>
         <div class="skill-tags">${s.tags.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>`;
       grid.appendChild(card);
@@ -142,9 +206,17 @@
     PROJECTS.forEach((p, i) => {
       const card = el('article', 'project-card reveal glass');
       card.dataset.delay = String(i * 80);
+      const linkHtml = (url, type, label) => {
+        if (url && url !== '#') return `<a href="${url}" class="proj-link proj-link--${type}" target="_blank" rel="noopener">${ICONS[type]} ${label}</a>`;
+        return `<a href="${url || '#'}" class="proj-link proj-link--${type}">${ICONS[type]} ${label}</a>`;
+      };
+      const linksRow = p.links.confidential
+        ? `<a href="#contact" class="proj-link proj-link--demo">${ICONS.demo} Details on request</a>
+           <span class="proj-link proj-link--private" aria-disabled="true">Confidential project</span>`
+        : `${linkHtml(p.links.demo, 'demo', 'Live Demo')}${linkHtml(p.links.code, 'code', 'Source Code')}`;
       card.innerHTML = `
         <div class="project-card__top">
-          <div class="project-card__ico">${p.icon}</div>
+          <div class="project-card__ico" aria-hidden="true">${p.icon}</div>
           <span class="project-card__tag">${p.tag}</span>
         </div>
         <h3>${p.title}</h3>
@@ -157,7 +229,8 @@
           <h4>Architecture Highlight</h4>
           <p class="project-card__arch">${p.arch}</p>
         </div>
-        <div class="project-card__stack">${p.stack.map(t => `<span class="stack-pill">${t}</span>`).join('')}</div>`;
+        <div class="project-card__stack">${p.stack.map(t => `<span class="stack-pill">${t}</span>`).join('')}</div>
+        <div class="project-card__links">${linksRow}</div>`;
       grid.appendChild(card);
     });
   }
@@ -169,12 +242,15 @@
     TIMELINE.forEach((t, i) => {
       const item = el('div', 'tl-item reveal');
       item.dataset.delay = String(i * 70);
+      const body = t.points
+        ? `<ul class="tl-points">${t.points.map(p => `<li>${p}</li>`).join('')}</ul>`
+        : `<p>${t.text}</p>`;
       item.innerHTML = `
         <div class="tl-period">${t.period}</div>
         <div class="tl-card glass">
           <div class="tl-role">${t.role}</div>
           <div class="tl-company">${t.company}</div>
-          <p>${t.text}</p>
+          ${body}
         </div>`;
       wrap.appendChild(item);
     });
@@ -188,7 +264,7 @@
       const card = el('article', 'service-card reveal glass');
       card.dataset.delay = String(i * 50);
       card.innerHTML = `
-        <div class="service-card__ico">${s.icon}</div>
+        <div class="service-card__ico" aria-hidden="true">${s.icon}</div>
         <h3>${s.title}</h3>
         <p>${s.desc}</p>`;
       grid.appendChild(card);
@@ -230,7 +306,7 @@
       card.dataset.delay = String(i * 55);
       card.innerHTML = `
         <span class="process-card__step">${String(i + 1).padStart(2, '0')}</span>
-        <div class="process-card__ico">${p.icon}</div>
+        <div class="process-card__ico" aria-hidden="true">${p.icon}</div>
         <h3>${p.title}</h3>
         <p>${p.desc}</p>`;
       grid.appendChild(card);
@@ -245,7 +321,7 @@
       const card = el('article', 'engage-card reveal glass');
       card.dataset.delay = String(i * 60);
       card.innerHTML = `
-        <div class="engage-card__ico">${e.icon}</div>
+        <div class="engage-card__ico" aria-hidden="true">${e.icon}</div>
         <span class="engage-card__tag">${e.tag}</span>
         <h3>${e.title}</h3>
         <p>${e.desc}</p>
@@ -440,6 +516,23 @@
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   }
 
+  /* ---------- Cursor spotlight on cards ---------- */
+  function initSpotlight() {
+    if (window.matchMedia('(pointer: coarse)').matches) return; // skip touch devices
+    const cards = $$('.skill-card, .project-card, .service-card, .process-card, .engage-card, .why-card, .tst-card');
+    cards.forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.setProperty('--mx', '-300px');
+        card.style.setProperty('--my', '-300px');
+      });
+    });
+  }
+
   /* ---------- Contact form (client-side validation) ---------- */
   function initForm() {
     const form = $('#contactForm');
@@ -512,6 +605,7 @@
     initReveal();
     initCounters();
     initTilt();
+    initSpotlight();
     initForm();
     initMisc();
     initLoader();

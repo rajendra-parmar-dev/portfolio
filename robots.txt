@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rajendraparmar0119-sketch.github.io/rajendra-parmar-dev/sitemap.xml
